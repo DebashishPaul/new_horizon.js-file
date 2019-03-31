@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+
+.box
+{ width:200px; 
+height:200px;
+float:left;
+margin:50px;
+background-color:#9C0;
+position: absolute;
+z-index:3;
+
+}
+.box:hover
+{ z-index:100;}
+
+.box2
+{ width:200px; 
+height:200px;
+float:left;
+position: absolute;
+margin:100px;
+background-color: #39F;
+z-index:2;
+}
+.box2:hover
+{ z-index:100;}
+
+.box3
+{ width:200px; 
+height:200px;
+float:left;
+position: absolute;
+margin:150px;
+background-color: #C30;
+z-index:1;
+}
+.box3:hover
+{ z-index:100;}

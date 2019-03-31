@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script type="text/javascript">
+
+
+
+var today=new Date()
+
+//Enter the occasion's MONTH (1-12) and DAY (1-31):
+var theoccasion=new Date(today.getFullYear(), 9, 25)
+
+//Customize text to show before and on occasion. Follow grammer below:
+var beforeOccasionText="left 20/20"
+var onOccasiontext="Today is Christmas. Happy Holidays!"
+
+var monthtext=new Array("Jan","Feb","Mar","April","May","June","July","Aug","Sep","Oct","Nov","Dec")
+theoccasion.setMonth(theoccasion.getMonth()-1) //change to 0-11 month format
+var showdate="("+monthtext[theoccasion.getMonth()]+" "+theoccasion.getDate()+")" //show date of occasion
+
+var one_day=1000*60*60*24
+var calculatediff=""
+
+calculatediff=Math.ceil((theoccasion.getTime()-today.getTime())/(one_day))
+if (calculatediff<0){ //if bday already passed
+var nextyeartoday=new Date()
+nextyeartoday.setFullYear(today.getFullYear()+1)
+calculatediff=Math.ceil((nextyeartoday.getTime()-today.getTime())/(one_day)+calculatediff)
+}
+
+//Display message accordingly
+var pluraldayornot=(calculatediff==1)? "day" : "days"
+if (calculatediff>0)
+	document.write("<b>"+calculatediff+" "+pluraldayornot+" "+beforeOccasionText+" "+showdate+"!</b>")
+else if (calculatediff==0)
+	document.write("<b>"+onOccasiontext+" "+showdate+"!</b>")
+
+</script>
+
+
+</head>
+
+<body>
+
+</body>
+</html>

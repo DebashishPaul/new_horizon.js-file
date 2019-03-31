@@ -1,0 +1,452 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<style type="text/css">
+/* Circle Text Styles */
+#outerCircleText {
+/* Optional - DO NOT SET FONT-SIZE HERE, SET IT IN THE SCRIPT */
+font-style: italic;
+font-weight: bold;
+font-family: 'comic sans ms', verdana, arial;
+color: #06F;
+/* End Optional */
+
+/* Start Required - Do Not Edit */
+position: absolute;top: 0;left: 0;z-index: 3000;cursor: default;}
+#outerCircleText div {position: relative;}
+#outerCircleText div div {position: absolute;top: 0;left: 0;text-align: center;}
+/* End Required */
+/* End Circle Text Styles */i
+r
+c
+S
+!
+e
+v
+
+</style>
+<script type="text/javascript">
+
+
+
+;(function(){
+
+// Your message here (QUOTED STRING)
+var msg = "JYM Studio";
+
+/* THE REST OF THE EDITABLE VALUES BELOW ARE ALL UNQUOTED NUMBERS */
+
+// Set font's style size for calculating dimensions
+// Set to number of desired pixels font size (decimal and negative numbers not allowed)
+var size = 10;
+
+// Set both to 1 for plain circle, set one of them to 2 for oval
+// Other numbers & decimals can have interesting effects, keep these low (0 to 3)
+var circleY = 0.75; var circleX = 2;
+
+// The larger this divisor, the smaller the spaces between letters
+// (decimals allowed, not negative numbers)
+var letter_spacing = 40;
+
+// The larger this multiplier, the bigger the circle/oval
+// (decimals allowed, not negative numbers, some rounding is applied)
+var diameter = 2;
+
+// Rotation speed, set it negative if you want it to spin clockwise (decimals allowed)
+var rotation = 0.4;
+
+// This is not the rotation speed, its the reaction speed, keep low!
+// Set this to 1 or a decimal less than one (decimals allowed, not negative numbers)
+var speed = 0.3;
+
+////////////////////// Stop Editing //////////////////////
+
+if (!window.addEventListener && !window.attachEvent || !document.createElement) return;
+
+msg = msg.split('');
+var n = msg.length - 1, a = Math.round(size * diameter * 0.208333), currStep = 20,
+ymouse = a * circleY + 20, xmouse = a * circleX + 20, y = [], x = [], Y = [], X = [],
+o = document.createElement('div'), oi = document.createElement('div'),
+b = document.compatMode && document.compatMode != "BackCompat"? document.documentElement : document.body,
+
+mouse = function(e){
+ e = e || window.event;
+ ymouse = !isNaN(e.pageY)? e.pageY : e.clientY; // y-position
+ xmouse = !isNaN(e.pageX)? e.pageX : e.clientX; // x-position
+},
+
+makecircle = function(){ // rotation/positioning
+ if(init.nopy){
+  o.style.top = (b || document.body).scrollTop + 'px';
+  o.style.left = (b || document.body).scrollLeft + 'px';
+ };
+ currStep -= rotation;
+ for (var d, i = n; i > -1; --i){ // makes the circle
+  d = document.getElementById('iemsg' + i).style;
+  d.top = Math.round(y[i] + a * Math.sin((currStep + i) / letter_spacing) * circleY - 15) + 'px';
+  d.left = Math.round(x[i] + a * Math.cos((currStep + i) / letter_spacing) * circleX) + 'px';
+ };
+},
+
+drag = function(){ // makes the resistance
+ y[0] = Y[0] += (ymouse - Y[0]) * speed;
+ x[0] = X[0] += (xmouse - 20 - X[0]) * speed;
+ for (var i = n; i > 0; --i){
+  y[i] = Y[i] += (y[i-1] - Y[i]) * speed;
+  x[i] = X[i] += (x[i-1] - X[i]) * speed;
+ };
+ makecircle();
+},
+
+init = function(){ // appends message divs, & sets initial values for positioning arrays
+ if(!isNaN(window.pageYOffset)){
+  ymouse += window.pageYOffset;
+  xmouse += window.pageXOffset;
+ } else init.nopy = true;
+ for (var d, i = n; i > -1; --i){
+  d = document.createElement('div'); d.id = 'iemsg' + i;
+  d.style.height = d.style.width = a + 'px';
+  d.appendChild(document.createTextNode(msg[i]));
+  oi.appendChild(d); y[i] = x[i] = Y[i] = X[i] = 0;
+ };
+ o.appendChild(oi); document.body.appendChild(o);
+ setInterval(drag, 25);
+},
+
+ascroll = function(){
+ ymouse += window.pageYOffset;
+ xmouse += window.pageXOffset;
+ window.removeEventListener('scroll', ascroll, false);
+};
+
+o.id = 'outerCircleText'; o.style.fontSize = size + 'px';
+
+if (window.addEventListener){
+ window.addEventListener('load', init, false);
+ document.addEventListener('mouseover', mouse, false);
+ document.addEventListener('mousemove', mouse, false);
+  if (/Apple/.test(navigator.vendor))
+   window.addEventListener('scroll', ascroll, false);
+}
+else if (window.attachEvent){
+ window.attachEvent('onload', init);
+ document.attachEvent('onmousemove', mouse);
+};
+
+})();
+
+</script>
+</head>
+
+<body>
+<div class="container">
+<div class="header">
+<div class="logo">
+<script>
+
+
+
+// ********** MAKE YOUR CHANGES HERE
+
+var text="<h1>JYM Studio</h1>" // YOUR TEXT
+var speed=80 // SPEED OF FADE
+
+// ********** LEAVE THE NEXT BIT ALONE!
+
+
+if (document.all||document.getElementById){
+document.write('<span id="highlight">' + text + '</span>')
+var storetext=document.getElementById? document.getElementById("highlight") : document.all.highlight
+}
+else
+document.write(text)
+var hex=new Array("00","14","28","3C","50","64","78","8C","A0","B4","C8","DC","F0")
+var r=1
+var g=1
+var b=1
+var seq=1
+function changetext(){
+rainbow="#"+hex[r]+hex[g]+hex[b]
+storetext.style.color=rainbow
+}
+function change(){
+if (seq==6){
+b--
+if (b==0)
+seq=1
+}
+if (seq==5){
+r++
+if (r==12)
+seq=6
+}
+if (seq==4){
+g--
+if (g==0)
+seq=5
+}
+if (seq==3){
+b++
+if (b==12)
+seq=4
+}
+if (seq==2){
+r--
+if (r==0)
+seq=3
+}
+if (seq==1){
+g++
+if (g==12)
+seq=2
+}
+changetext()
+}
+function starteffect(){
+if (document.all||document.getElementById)
+flash=setInterval("change()",speed)
+}
+starteffect()
+</script>
+</div>
+<div class="mini_nav">
+<form name="count">
+<input type="text" size="67" name="count2"  id="mini-nav">
+</form>
+
+
+<script>
+
+
+
+
+//change the text below to reflect your own,
+var before="Christmas!"
+var current="Today is Christmas. Merry Christmas!"
+var montharray=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
+
+function countdown(yr,m,d){
+theyear=yr;themonth=m;theday=d
+var today=new Date()
+var todayy=today.getYear()
+if (todayy < 1000)
+todayy+=1900
+var todaym=today.getMonth()
+var todayd=today.getDate()
+var todayh=today.getHours()
+var todaymin=today.getMinutes()
+var todaysec=today.getSeconds()
+var todaystring=montharray[todaym]+" "+todayd+", "+todayy+" "+todayh+":"+todaymin+":"+todaysec
+futurestring=montharray[m-1]+" "+d+", "+yr
+dd=Date.parse(futurestring)-Date.parse(todaystring)
+dday=Math.floor(dd/(60*60*1000*24)*1)
+dhour=Math.floor((dd%(60*60*1000*24))/(60*60*1000)*1)
+dmin=Math.floor(((dd%(60*60*1000*24))%(60*60*1000))/(60*1000)*1)
+dsec=Math.floor((((dd%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1)
+if(dday==0&&dhour==0&&dmin==0&&dsec==1){
+document.forms.count.count2.value=current
+return
+}
+else
+document.forms.count.count2.value="Only "+dday+ " days, "+dhour+" hours, "+dmin+" minutes, and "+dsec+" seconds left until "+before
+setTimeout("countdown(theyear,themonth,theday)",1000)
+}
+//enter the count down date using the format year/month/day
+countdown(2012,12,25)
+</script>
+
+</div>
+<div class="nav"></div>
+</div>
+<div class="box">
+<div class="box1"></div>
+<div class="box2">
+<script language="JavaScript1.2">
+
+/*
+
+*/
+
+///////configure the below four variables to change the style of the slider///////
+//set the scrollerwidth and scrollerheight to the width/height of the LARGEST image in your slideshow!
+var scrollerwidth='360px'
+var scrollerheight='500px'
+var scrollerbgcolor='white'
+//3000 miliseconds=3 seconds
+var pausebetweenimages=3000
+
+
+//configure the below variable to change the images used in the slideshow. If you wish the images to be clickable, simply wrap the images with the appropriate <a> tag
+var slideimages=new Array()
+slideimages[0]='<a href="#"><img src="images/1.jpg" /></a>'
+slideimages[1]='<a href="#"><img src="images/2.jpg" /></a>'
+slideimages[2]='<a href="#"><img src="images/3.jpg" /></a>'
+slideimages[3]='<a href="#"><img src="images/4.jpg" /></a>'
+slideimages[4]='<a href="#"><img src="images/5.jpg" /></a>'
+slideimages[5]='<a href="#"><img src="images/6.jpg" /></a>'
+
+//extend this list
+
+
+
+///////Do not edit pass this line///////////////////////
+     
+var ie=document.all
+var dom=document.getElementById
+
+if (slideimages.length>1)
+i=2
+else
+i=0
+
+function move1(whichlayer){
+tlayer=eval(whichlayer)
+if (tlayer.left>0&&tlayer.left<=5){
+tlayer.left=0
+setTimeout("move1(tlayer)",pausebetweenimages)
+setTimeout("move2(document.main.document.second)",pausebetweenimages)
+return
+}
+if (tlayer.left>=tlayer.document.width*-1){
+tlayer.left-=5
+setTimeout("move1(tlayer)",50)
+}
+else{
+tlayer.left=parseInt(scrollerwidth)+5
+tlayer.document.write(slideimages[i])
+tlayer.document.close()
+if (i==slideimages.length-1)
+i=0
+else
+i++
+}
+}
+
+function move2(whichlayer){
+tlayer2=eval(whichlayer)
+if (tlayer2.left>0&&tlayer2.left<=5){
+tlayer2.left=0
+setTimeout("move2(tlayer2)",pausebetweenimages)
+setTimeout("move1(document.main.document.first)",pausebetweenimages)
+return
+}
+if (tlayer2.left>=tlayer2.document.width*-1){
+tlayer2.left-=5
+setTimeout("move2(tlayer2)",50)
+}
+else{
+tlayer2.left=parseInt(scrollerwidth)+5
+tlayer2.document.write(slideimages[i])
+tlayer2.document.close()
+if (i==slideimages.length-1)
+i=0
+else
+i++
+}
+}
+
+function move3(whichdiv){
+tdiv=eval(whichdiv)
+if (parseInt(tdiv.style.left)>0&&parseInt(tdiv.style.left)<=5){
+tdiv.style.left=0+"px"
+setTimeout("move3(tdiv)",pausebetweenimages)
+setTimeout("move4(scrollerdiv2)",pausebetweenimages)
+return
+}
+if (parseInt(tdiv.style.left)>=tdiv.offsetWidth*-1){
+tdiv.style.left=parseInt(tdiv.style.left)-5+"px"
+setTimeout("move3(tdiv)",50)
+}
+else{
+tdiv.style.left=scrollerwidth
+tdiv.innerHTML=slideimages[i]
+if (i==slideimages.length-1)
+i=0
+else
+i++
+}
+}
+
+function move4(whichdiv){
+tdiv2=eval(whichdiv)
+if (parseInt(tdiv2.style.left)>0&&parseInt(tdiv2.style.left)<=5){
+tdiv2.style.left=0+"px"
+setTimeout("move4(tdiv2)",pausebetweenimages)
+setTimeout("move3(scrollerdiv1)",pausebetweenimages)
+return
+}
+if (parseInt(tdiv2.style.left)>=tdiv2.offsetWidth*-1){
+tdiv2.style.left=parseInt(tdiv2.style.left)-5+"px"
+setTimeout("move4(scrollerdiv2)",50)
+}
+else{
+tdiv2.style.left=scrollerwidth
+tdiv2.innerHTML=slideimages[i]
+if (i==slideimages.length-1)
+i=0
+else
+i++
+}
+}
+
+function startscroll(){
+if (ie||dom){
+scrollerdiv1=ie? first2 : document.getElementById("first2")
+scrollerdiv2=ie? second2 : document.getElementById("second2")
+move3(scrollerdiv1)
+scrollerdiv2.style.left=scrollerwidth
+}
+else if (document.layers){
+document.main.visibility='show'
+move1(document.main.document.first)
+document.main.document.second.left=parseInt(scrollerwidth)+5
+document.main.document.second.visibility='show'
+}
+}
+
+window.onload=startscroll
+
+</script>
+
+
+
+
+<ilayer id="main" width=&{scrollerwidth}; height=&{scrollerheight}; bgColor=&{scrollerbgcolor}; visibility=hide>
+<layer id="first" left=1 top=0 width=&{scrollerwidth}; >
+<script language="JavaScript1.2">
+if (document.layers)
+document.write(slideimages[0])
+</script>
+</layer>
+<layer id="second" left=0 top=0 width=&{scrollerwidth}; visibility=hide>
+<script language="JavaScript1.2">
+if (document.layers)
+document.write(slideimages[1])
+</script>
+</layer>
+</ilayer>
+
+<script language="JavaScript1.2">
+if (ie||dom){
+document.writeln('<div id="main2" style="position:relative;width:'+scrollerwidth+';height:'+scrollerheight+';overflow:hidden;background-color:'+scrollerbgcolor+'">')
+document.writeln('<div style="position:absolute;width:'+scrollerwidth+';height:'+scrollerheight+';clip:rect(0 '+scrollerwidth+' '+scrollerheight+' 0);left:0px;top:0px">')
+document.writeln('<div id="first2" style="position:absolute;width:'+scrollerwidth+';left:1px;top:0px;">')
+document.write(slideimages[0])
+document.writeln('</div>')
+document.writeln('<div id="second2" style="position:absolute;width:'+scrollerwidth+';left:0px;top:0px">')
+document.write(slideimages[1])
+document.writeln('</div>')
+document.writeln('</div>')
+document.writeln('</div>')
+}
+</script>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>
